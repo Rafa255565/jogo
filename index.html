@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caça ao Tesouro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3498db">
+    <link rel="icon" href="images/icon-192x192.png">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>Caça ao Tesouro</h1>
+            <div class="score-container">
+                <span>Pontuação: <span id="score">0</span></span>
+                <span>Tempo: <span id="timer">60</span>s</span>
+            </div>
+        </div>
+        
+        <div class="game-board" id="gameBoard">
+            <!-- Os itens serão gerados dinamicamente pelo JavaScript -->
+        </div>
+        
+        <div class="controls">
+            <button id="startButton">Iniciar Jogo</button>
+            <button id="restartButton" style="display: none;">Reiniciar</button>
+        </div>
+        
+        <div id="messageBox" class="message-box">
+            <p>Encontre todos os tesouros escondidos antes que o tempo acabe!</p>
+        </div>
+    </div>
+    
+    <div id="gameOverScreen" class="game-over-screen">
+        <div class="game-over-content">
+            <h2>Fim de Jogo!</h2>
+            <p>Sua pontuação final: <span id="finalScore">0</span></p>
+            <button id="playAgainButton">Jogar Novamente</button>
+        </div>
+    </div>
+    
+    <script src="js/game.js"></script>
+    <script>
+        // Registrar o service worker para funcionalidade offline
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log('Service Worker registrado!', reg))
+                .catch(err => console.log('Erro ao registrar Service Worker', err));
+        }
+    </script>
+</body>
+</html>
